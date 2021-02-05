@@ -7,13 +7,31 @@
 
 import Foundation
 
-/// Resource used by the Api request to determine the url used and model type.
 protocol APIResource {
     associatedtype ModelType: Decodable
-    var url: URL? { get set }
+    var methodPath: String { get }
+    var key: String { get }
+    var queryValue: String? { get }
 }
-/// Conforms to APIResource and contains the model and url related to the venues.
-struct Resource<T: Decodable>: APIResource {
-    typealias ModelType = T
-    var url: URL?
+
+extension APIResource {
+//    var url: URL? {
+//        var components = URLComponents(string: "https://www.thecocktaildb.com/api/json/v1\(key)")
+//        components?.path = methodPath
+//        components?.queryItems = [
+//            URLQueryItem(name: "s", value: queryValue ?? "a"),
+//        ]
+//        return components?.url
+//    }
+    
+    var url: URL? {
+        return URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(queryValue ?? "a")")
+    }
+}
+
+struct DrinksResource: APIResource {
+    typealias ModelType = Drinks
+    let methodPath = "/search.php"
+    let key = "/1"
+    var queryValue: String?
 }

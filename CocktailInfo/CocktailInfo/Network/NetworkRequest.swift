@@ -88,8 +88,10 @@ extension APIRequest: NetworkRequest {
     /// Decodes data into model type.
     /// - Parameter data: The data recieved from the url.
     /// - Returns: Parsed data into a model type.
+    
     func decode(_ data: Data) -> Resource.ModelType? {
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.customFormat)
         
         guard let object = try? decoder.decode(ModelType.self, from: data) else { return nil }
         return object
