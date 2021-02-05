@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  MovieInfo
+//  CocktailInfo
 //
-//  Created by Fábio Maciel de Sousa on 04/02/21.
+//  Created by Fábio Maciel de Sousa on 05/02/21.
 //
 
 import UIKit

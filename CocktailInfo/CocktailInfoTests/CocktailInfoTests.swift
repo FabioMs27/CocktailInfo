@@ -1,14 +1,14 @@
 //
-//  MovieInfoTests.swift
-//  MovieInfoTests
+//  CocktailInfoTests.swift
+//  CocktailInfoTests
 //
-//  Created by Fábio Maciel de Sousa on 04/02/21.
+//  Created by Fábio Maciel de Sousa on 05/02/21.
 //
 
 import XCTest
-@testable import MovieInfo
+@testable import CocktailInfo
 
-class MovieInfoTests: XCTestCase {
+class CocktailInfoTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
