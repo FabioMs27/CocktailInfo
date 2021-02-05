@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// Used to fetch data from a url and parse it into swift data.
 protocol NetworkRequest: AnyObject {
@@ -99,5 +100,25 @@ extension APIRequest: NetworkRequest {
     /// - Returns: A result enumeration containing either a model type or a network error.
     func load(withCompletion completion: @escaping (Result<Resource.ModelType, NetworkError>) -> ()) {
         load(resource.url, withCompletion: completion)
+    }
+}
+
+class ImageRequest {
+    let url: URL
+    
+    init(url: URL) {
+        self.url = url
+    }
+}
+
+extension ImageRequest: NetworkRequest {
+    typealias ModelType = UIImage
+    
+    func decode(_ data: Data) -> UIImage? {
+        return UIImage(data: data)
+    }
+    
+    func load(withCompletion completion: @escaping (Result<ModelType, NetworkError>) -> ()) {
+        load(url, withCompletion: completion)
     }
 }
