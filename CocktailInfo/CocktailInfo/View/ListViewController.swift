@@ -52,7 +52,7 @@ class ListViewController: UIViewController {
                 self?.dataSource.cocktails = list.drinks
                 self?.tableView.reloadData()
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.showAlert(title: "Error!", message: error.localizedDescription)
             }
         }
     }
@@ -67,8 +67,27 @@ class ListViewController: UIViewController {
                 self?.tableView.reloadData()
                 self?.imageRequests[cocktail.id] = nil
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.showAlert(title: "Image error!", message: error.localizedDescription)
             }
+        }
+    }
+    
+    /// Method that presents an alert. It has two options and goes back to the previous screen.
+    /// - Parameter title: A string to be presented on the alert view.
+    func showAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let tryAgainAction = UIAlertAction(title: "Try again", style: .default) { [weak self] _ in
+            self?.fetchData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addAction(tryAgainAction)
+        alert.addAction(cancelAction)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true)
         }
     }
 }
