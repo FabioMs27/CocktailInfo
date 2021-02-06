@@ -22,7 +22,7 @@ extension CocktailDataSource: UITableViewDataSource {
         cell?.name = cocktails[indexPath.row].name
         cell?.category = cocktails[indexPath.row].category
         if indexPath.row < thumbNails.count {
-            cell?.imageView?.image = thumbNails[indexPath.row]
+            cell?.cocktailImage = thumbNails[indexPath.row]
         }
         return cell ?? UITableViewCell()
     }

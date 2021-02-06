@@ -26,13 +26,6 @@ class DetailViewController: UIViewController {
         glassLabel.text = selectedCocktail?.glass ?? ""
         instructionsLabel.text = selectedCocktail?.instructions ?? ""
         cocktailImage.image = selectedImage
-        setupNavigationBar()
-    }
-    
-    func setupNavigationBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
     }
 
 }

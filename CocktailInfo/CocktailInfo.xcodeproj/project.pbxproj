@@ -23,6 +23,7 @@
 		7910732B25CDA6E3001BDC78 /* CocktailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910732925CDA6E3001BDC78 /* CocktailTableViewCell.swift */; };
 		7910733125CDAFDB001BDC78 /* CocktailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910733025CDAFDB001BDC78 /* CocktailDataSource.swift */; };
 		7910733C25CDD78F001BDC78 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910733B25CDD78F001BDC78 /* DetailViewController.swift */; };
+		79A136D025CF111E006FEFAF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136CF25CF111D006FEFAF /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		7910732925CDA6E3001BDC78 /* CocktailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailTableViewCell.swift; sourceTree = "<group>"; };
 		7910733025CDAFDB001BDC78 /* CocktailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDataSource.swift; sourceTree = "<group>"; };
 		7910733B25CDD78F001BDC78 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		79A136CF25CF111D006FEFAF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			children = (
 				791072F325CD1C6D001BDC78 /* Error Handling */,
 				7910730E25CD2DA1001BDC78 /* Formatting.swift */,
+				79A136CF25CF111D006FEFAF /* UIView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				791072AE25CD19A4001BDC78 /* AppDelegate.swift in Sources */,
 				791072EA25CD1C28001BDC78 /* NetworkRequest.swift in Sources */,
 				791072EF25CD1C4E001BDC78 /* APIResource.swift in Sources */,
+				79A136D025CF111E006FEFAF /* UIView.swift in Sources */,
 				791072B025CD19A4001BDC78 /* SceneDelegate.swift in Sources */,
 				7910730A25CD278E001BDC78 /* ListViewController.swift in Sources */,
 				791072F525CD1C7A001BDC78 /* NetworkError.swift in Sources */,
