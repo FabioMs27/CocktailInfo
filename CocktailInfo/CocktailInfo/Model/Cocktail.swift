@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 struct Cocktail {
+    let id: String
     let name: String
     let category: String
     let alcoholic: String
@@ -19,6 +21,7 @@ struct Cocktail {
 
 extension Cocktail: Decodable {
     enum CodingKeys: String, CodingKey {
+        case id           = "idDrink"
         case name         = "strDrink"
         case category     = "strCategory"
         case alcoholic    = "strAlcoholic"
@@ -30,7 +33,7 @@ extension Cocktail: Decodable {
 }
 
 struct Drinks {
-    let drinks: [Cocktail]
+    var drinks: [Cocktail]
 }
 
 extension Drinks: Decodable {

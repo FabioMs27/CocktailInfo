@@ -52,13 +52,6 @@ extension NetworkRequest {
                     return
                 }
                 
-                guard let mime = response?.mimeType, mime == "application/json" else {
-                    DispatchQueue.main.async {
-                        completion(.failure(.invalidResponseType))
-                    }
-                    return
-                }
-                
                 DispatchQueue.main.async { [weak self] in
                     guard
                         let data = data,
@@ -106,9 +99,9 @@ extension APIRequest: NetworkRequest {
 }
 
 class ImageRequest {
-    let url: URL
+    let url: URL?
     
-    init(url: URL) {
+    init(url: URL?) {
         self.url = url
     }
 }
