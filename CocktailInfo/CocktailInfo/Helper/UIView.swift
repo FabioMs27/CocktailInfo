@@ -13,9 +13,15 @@ extension UIView {
     @IBInspectable
     var cornerRadius: CGFloat {
         get { 0.0 }
+        set { layer.cornerRadius = newValue }
+    }
+    
+    @IBInspectable
+    var shadowRadius: CGFloat {
+        get { 0.0 }
         set {
-            self.layer.cornerRadius = newValue
-            self.layer.masksToBounds = true
+            layer.masksToBounds = false
+            layer.shadowRadius = newValue
         }
     }
     
@@ -32,9 +38,26 @@ extension UIView {
     }
     
     @IBInspectable
-    var shadowOpacity: Float {
+    var shadowOpacity: CGFloat {
         get { 0.0 }
-        set { layer.shadowOpacity = newValue }
+        set { layer.shadowOpacity = Float(newValue) }
     }
     
+}
+
+extension UIView {
+    private var deviceHeight: CGFloat { UIScreen.main.bounds.height }
+    private var originalHeight: CGFloat { 896.0 }
+    
+    func setHeightRelativeToDevice() {
+        self.constraints
+            .filter { $0.identifier == "dynamic" }
+            .forEach { $0.constant = ($0.constant * deviceHeight) / originalHeight }
+        self.subviews
+            .forEach { $0.setHeightRelativeToDevice() }
+    }
+    
+    func setRoundedShadow() {
+        layer.cornerRadius = frame.height/2
+    }
 }

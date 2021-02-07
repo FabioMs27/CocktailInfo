@@ -22,10 +22,12 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = selectedCocktail?.name ?? ""
+        nameLabel.setRoundedShadow()
         alcoholicLabel.text = selectedCocktail?.alcoholic ?? ""
         glassLabel.text = selectedCocktail?.glass ?? ""
         instructionsLabel.text = selectedCocktail?.instructions ?? ""
         cocktailImage.image = selectedImage
+        self.view.setHeightRelativeToDevice()
     }
 
 }
