@@ -24,6 +24,7 @@
 		7910733125CDAFDB001BDC78 /* CocktailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910733025CDAFDB001BDC78 /* CocktailDataSource.swift */; };
 		7910733C25CDD78F001BDC78 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910733B25CDD78F001BDC78 /* DetailViewController.swift */; };
 		79A136D025CF111E006FEFAF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136CF25CF111D006FEFAF /* UIView.swift */; };
+		79A136D525CFF91C006FEFAF /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136D425CFF91B006FEFAF /* ListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		7910733025CDAFDB001BDC78 /* CocktailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDataSource.swift; sourceTree = "<group>"; };
 		7910733B25CDD78F001BDC78 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		79A136CF25CF111D006FEFAF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		79A136D425CFF91B006FEFAF /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 		791072E225CD1AF6001BDC78 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				79A136D425CFF91B006FEFAF /* ListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				7910730A25CD278E001BDC78 /* ListViewController.swift in Sources */,
 				791072F525CD1C7A001BDC78 /* NetworkError.swift in Sources */,
 				7910733125CDAFDB001BDC78 /* CocktailDataSource.swift in Sources */,
+				79A136D525CFF91C006FEFAF /* ListViewModel.swift in Sources */,
 				7910732B25CDA6E3001BDC78 /* CocktailTableViewCell.swift in Sources */,
 				7910730F25CD2DA1001BDC78 /* Formatting.swift in Sources */,
 				791072FD25CD1EEB001BDC78 /* Cocktail.swift in Sources */,

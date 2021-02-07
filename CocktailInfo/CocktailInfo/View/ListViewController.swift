@@ -6,18 +6,22 @@
 //
 
 import UIKit
+import Combine
 
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     let dataSource = CocktailDataSource()
+    let viewModel = ListViewModel()
+    private var cancellables: Set<AnyCancellable> = []
     private var requestObject: AnyObject?
     private var imageRequests = [String:AnyObject?]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = dataSource
-        fetchData()
+        viewModel.fetchData()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,46 +43,31 @@ class ListViewController: UIViewController {
         }
     }
     
-    func fetchData() {
-        let request = APIRequest(resource: DrinksResource())
-        requestObject = request
-        request.load { [weak self] result in
-            switch result {
-            case .success(let list):
-                self?.dataSource.thumbNails = [UIImage?](repeating: nil, count: list.drinks.count)
-                for (index, cocktail) in list.drinks.enumerated() {
-                    self?.fetchImage(from: cocktail, at: index)
-                }
-                self?.dataSource.cocktails = list.drinks
-                self?.tableView.reloadData()
-            case .failure(let error):
-                self?.showAlert(title: "Error!", message: error.localizedDescription)
+    private func bindViewModel() {
+        viewModel.$drinks.sink { [weak self] drinks in
+            self?.dataSource.cocktails = drinks
+            self?.tableView.reloadData()
+        }.store(in: &cancellables)
+        
+        viewModel.$images.sink { [weak self] images in
+            self?.dataSource.thumbNails = images
+            self?.tableView.reloadData()
+        }.store(in: &cancellables)
+        
+        viewModel.$errorDescription.sink { [weak self] description in
+            if let message = description {
+                self?.showAlert(title: "Error!", message: message)
             }
-        }
-    }
-    
-    func fetchImage(from cocktail: Cocktail, at index: Int) {
-        let request = ImageRequest(url: cocktail.thumbNailUrl)
-        imageRequests[cocktail.id] = request
-        request.load { [weak self] result in
-            switch result {
-            case .success(let image):
-                self?.dataSource.thumbNails[index] = image
-                self?.tableView.reloadData()
-                self?.imageRequests[cocktail.id] = nil
-            case .failure(let error):
-                self?.showAlert(title: "Image error!", message: error.localizedDescription)
-            }
-        }
+        }.store(in: &cancellables)
     }
     
     /// Method that presents an alert. It has two options and goes back to the previous screen.
     /// - Parameter title: A string to be presented on the alert view.
-    func showAlert(title: String?, message: String?) {
+    private func showAlert(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let tryAgainAction = UIAlertAction(title: "Try again", style: .default) { [weak self] _ in
-            self?.fetchData()
+            self?.viewModel.fetchData()
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
