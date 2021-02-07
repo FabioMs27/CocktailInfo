@@ -19,6 +19,12 @@ struct Cocktail {
     let dateModified: Date
 }
 
+extension Cocktail: Comparable {
+    static func < (lhs: Cocktail, rhs: Cocktail) -> Bool {
+        return lhs.name < rhs.name
+    }
+}
+
 extension Cocktail: Decodable {
     enum CodingKeys: String, CodingKey {
         case id           = "idDrink"

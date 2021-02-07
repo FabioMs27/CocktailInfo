@@ -14,8 +14,6 @@ class ListViewController: UIViewController {
     let dataSource = CocktailDataSource()
     let viewModel = ListViewModel()
     private var cancellables: Set<AnyCancellable> = []
-    private var requestObject: AnyObject?
-    private var imageRequests = [String:AnyObject?]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

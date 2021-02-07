@@ -24,7 +24,7 @@ class ListViewModel: ObservableObject {
         request.load { [weak self] result in
             switch result {
             case .success(let list):
-                self?.drinks = list.drinks
+                self?.drinks = list.drinks.sorted(by: <)
                 self?.images = [UIImage?](repeating: nil, count: list.drinks.count)
                 for (index, cocktail) in list.drinks.enumerated() {
                     self?.fetchImage(from: cocktail, at: index)
