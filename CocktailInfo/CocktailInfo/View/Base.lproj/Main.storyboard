@@ -55,13 +55,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qlk-9s-jvZ">
                                                     <rect key="frame" x="145" y="49.5" width="57.5" height="45.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8n-5n-TQC">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8n-5n-TQC">
                                                             <rect key="frame" x="0.0" y="0.0" width="57.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="636-ZW-Cc1">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="636-ZW-Cc1">
                                                             <rect key="frame" x="0.0" y="28.5" width="57.5" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,7 +71,7 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="Qlk-9s-jvZ" secondAttribute="trailing" constant="187.5" id="QFu-Qj-yp7"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Qlk-9s-jvZ" secondAttribute="trailing" id="QFu-Qj-yp7"/>
                                                 <constraint firstItem="Qlk-9s-jvZ" firstAttribute="centerY" secondItem="HGb-Oi-bKP" secondAttribute="centerY" id="Xjh-4E-OtA"/>
                                                 <constraint firstItem="Qlk-9s-jvZ" firstAttribute="leading" secondItem="hcF-LW-KlA" secondAttribute="trailing" constant="16" id="dBn-6J-zKW"/>
                                                 <constraint firstItem="hcF-LW-KlA" firstAttribute="left" secondItem="HGb-Oi-bKP" secondAttribute="leftMargin" id="doa-cY-yrD"/>
@@ -132,7 +132,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Margarita" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwK-HG-RaP">
+                            <label opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Margarita" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwK-HG-RaP">
                                 <rect key="frame" x="148.5" y="448" width="117.5" height="31.5"/>
                                 <color key="backgroundColor" name="LabelBackground"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
@@ -249,6 +249,7 @@
                             <constraint firstItem="Cde-iP-dlm" firstAttribute="leading" secondItem="qcV-Wb-hvz" secondAttribute="trailing" constant="16.5" id="M5V-C5-3QI"/>
                             <constraint firstItem="bsD-oE-br9" firstAttribute="top" secondItem="qcV-Wb-hvz" secondAttribute="bottom" constant="8" symbolic="YES" id="MiM-VC-N0P"/>
                             <constraint firstItem="ZZf-HZ-dHE" firstAttribute="leading" secondItem="hnv-fB-3Ws" secondAttribute="leadingMargin" id="Mwq-5b-rKl"/>
+                            <constraint firstItem="QwK-HG-RaP" firstAttribute="left" relation="greaterThanOrEqual" secondItem="hnv-fB-3Ws" secondAttribute="leftMargin" id="OgU-hQ-0oY"/>
                             <constraint firstItem="bsD-oE-br9" firstAttribute="trailing" secondItem="hnv-fB-3Ws" secondAttribute="trailingMargin" id="QtO-0i-oGg"/>
                             <constraint firstItem="vBY-0r-N99" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bsD-oE-br9" secondAttribute="bottom" constant="8" symbolic="YES" id="RIo-H2-9UA"/>
                             <constraint firstAttribute="bottomMargin" secondItem="ZZf-HZ-dHE" secondAttribute="bottom" constant="26" identifier="dynamic" id="UVi-a4-wiW"/>
