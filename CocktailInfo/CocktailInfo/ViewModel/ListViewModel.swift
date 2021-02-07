@@ -18,15 +18,18 @@ class ListViewModel: ObservableObject {
     private var requestObject: AnyObject?
     private var imageRequests = [String:AnyObject?]()
     
-    func fetchData() {
-        let request = APIRequest(resource: DrinksResource())
+    func fetchData(By search: String? = nil) {
+        let resource = DrinksResource(queryValue: search)
+        let request = APIRequest(resource: resource)
         requestObject = request
+        imageRequests.removeAll()
         request.load { [weak self] result in
             switch result {
             case .success(let list):
-                self?.drinks = list.drinks.sorted(by: <)
-                self?.images = [UIImage?](repeating: nil, count: list.drinks.count)
-                for (index, cocktail) in list.drinks.enumerated() {
+                guard let listedDrinks = list.drinks else { return }
+                self?.drinks = listedDrinks.sorted(by: <)
+                self?.images = [UIImage?](repeating: nil, count: listedDrinks.count)
+                for (index, cocktail) in listedDrinks.enumerated() {
                     self?.fetchImage(from: cocktail, at: index)
                 }
             case .failure(let error):
@@ -35,18 +38,18 @@ class ListViewModel: ObservableObject {
         }
     }
     
-    func fetchImage(from cocktail: Cocktail, at index: Int) {
+    private func fetchImage(from cocktail: Cocktail, at index: Int) {
         let request = ImageRequest(url: cocktail.thumbNailUrl)
         imageRequests[cocktail.id] = request
         request.load { [weak self] result in
             switch result {
             case .success(let image):
-                self?.images[index] = image
-                self?.imageRequests[cocktail.id] = nil
-                print(image)
-            case .failure(let error):
-                self?.errorDescription = error.localizedDescription
+                if index < self?.images.count ?? 0 {
+                    self?.images[index] = image
+                }
+            case .failure: break
             }
+            self?.imageRequests[cocktail.id] = nil
         }
     }
 }

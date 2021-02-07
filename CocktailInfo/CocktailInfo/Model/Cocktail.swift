@@ -16,7 +16,7 @@ struct Cocktail {
     let glass: String
     let instructions: String
     let thumbNailUrl: URL
-    let dateModified: Date
+    let dateModified: Date?
 }
 
 extension Cocktail: Comparable {
@@ -39,7 +39,7 @@ extension Cocktail: Decodable {
 }
 
 struct Drinks {
-    var drinks: [Cocktail]
+    var drinks: [Cocktail]?
 }
 
 extension Drinks: Decodable {

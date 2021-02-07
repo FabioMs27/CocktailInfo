@@ -10,16 +10,18 @@ import Combine
 
 class ListViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    let dataSource = CocktailDataSource()
-    let viewModel = ListViewModel()
+    @IBOutlet weak private var tableView: UITableView!
+    private let dataSource = CocktailDataSource()
+    private let viewModel = ListViewModel()
     private var cancellables: Set<AnyCancellable> = []
+    private let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = dataSource
         viewModel.fetchData()
         bindViewModel()
+        setupSearchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +41,14 @@ class ListViewController: UIViewController {
             detailViewController.selectedCocktail = selectedCocktail
             detailViewController.selectedImage = selectedImage
         }
+    }
+    
+    private func setupSearchBar() {
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Cocktails"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     private func bindViewModel() {
@@ -76,5 +86,19 @@ class ListViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.present(alert, animated: true)
         }
+    }
+}
+
+extension ListViewController: UISearchBarDelegate {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        let text = searchBar.text ?? ""
+        viewModel.fetchData(By: text.formatted)
+    }
+}
+
+extension String {
+    var formatted: String? {
+        let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? nil : trimmed.lowercased().replacingOccurrences(of: " ", with: "")
     }
 }
