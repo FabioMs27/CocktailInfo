@@ -15,13 +15,8 @@ It uses storyboard for the UI and NSLayoutConstraints(also programmatically) and
 The architectural pattern used is MVVM and it uses the reactive programming(Combine) approach for binding.<br/>
 
 ## UI
-
   - Storyboard
-
 ## Architectural pattern
-
   - MVVM
-
 ## Networking
-
   - URLSession
