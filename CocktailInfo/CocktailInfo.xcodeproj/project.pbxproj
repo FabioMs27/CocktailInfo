@@ -12,7 +12,6 @@
 		791072B525CD19A4001BDC78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 791072B325CD19A4001BDC78 /* Main.storyboard */; };
 		791072B725CD19AA001BDC78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 791072B625CD19AA001BDC78 /* Assets.xcassets */; };
 		791072BA25CD19AA001BDC78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 791072B825CD19AA001BDC78 /* LaunchScreen.storyboard */; };
-		791072C525CD19AA001BDC78 /* CocktailInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791072C425CD19AA001BDC78 /* CocktailInfoTests.swift */; };
 		791072D025CD19AA001BDC78 /* CocktailInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791072CF25CD19AA001BDC78 /* CocktailInfoUITests.swift */; };
 		791072EA25CD1C28001BDC78 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791072E925CD1C28001BDC78 /* NetworkRequest.swift */; };
 		791072EF25CD1C4E001BDC78 /* APIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791072EE25CD1C4E001BDC78 /* APIResource.swift */; };
@@ -25,6 +24,8 @@
 		7910733C25CDD78F001BDC78 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910733B25CDD78F001BDC78 /* DetailViewController.swift */; };
 		79A136D025CF111E006FEFAF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136CF25CF111D006FEFAF /* UIView.swift */; };
 		79A136D525CFF91C006FEFAF /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136D425CFF91B006FEFAF /* ListViewModel.swift */; };
+		79A136DA25D10F97006FEFAF /* cocktail.json in Resources */ = {isa = PBXBuildFile; fileRef = 79A136D925D10F96006FEFAF /* cocktail.json */; };
+		79A136E225D10FFA006FEFAF /* CocktailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136E125D10FFA006FEFAF /* CocktailModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +54,6 @@
 		791072B925CD19AA001BDC78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		791072BB25CD19AA001BDC78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		791072C025CD19AA001BDC78 /* CocktailInfoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocktailInfoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		791072C425CD19AA001BDC78 /* CocktailInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailInfoTests.swift; sourceTree = "<group>"; };
 		791072C625CD19AA001BDC78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		791072CB25CD19AA001BDC78 /* CocktailInfoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocktailInfoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		791072CF25CD19AA001BDC78 /* CocktailInfoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailInfoUITests.swift; sourceTree = "<group>"; };
@@ -69,6 +69,8 @@
 		7910733B25CDD78F001BDC78 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		79A136CF25CF111D006FEFAF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		79A136D425CFF91B006FEFAF /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		79A136D925D10F96006FEFAF /* cocktail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cocktail.json; sourceTree = "<group>"; };
+		79A136E125D10FFA006FEFAF /* CocktailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +137,9 @@
 		791072C325CD19AA001BDC78 /* CocktailInfoTests */ = {
 			isa = PBXGroup;
 			children = (
-				791072C425CD19AA001BDC78 /* CocktailInfoTests.swift */,
 				791072C625CD19AA001BDC78 /* Info.plist */,
+				79A136D925D10F96006FEFAF /* cocktail.json */,
+				79A136E125D10FFA006FEFAF /* CocktailModel.swift */,
 			);
 			path = CocktailInfoTests;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 					};
 					791072BF25CD19AA001BDC78 = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
 						TestTargetID = 791072A925CD19A4001BDC78;
 					};
 					791072CA25CD19AA001BDC78 = {
@@ -327,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79A136DA25D10F97006FEFAF /* cocktail.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				791072C525CD19AA001BDC78 /* CocktailInfoTests.swift in Sources */,
+				79A136E225D10FFA006FEFAF /* CocktailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +575,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BY575KUK4V;
 				INFOPLIST_FILE = CocktailInfoTests/Info.plist;
@@ -581,6 +587,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fabio.CocktailInfoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CocktailInfo.app/CocktailInfo";
@@ -592,6 +599,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BY575KUK4V;
 				INFOPLIST_FILE = CocktailInfoTests/Info.plist;
