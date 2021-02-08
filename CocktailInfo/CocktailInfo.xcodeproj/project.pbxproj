@@ -27,6 +27,8 @@
 		79A136DA25D10F97006FEFAF /* cocktail.json in Resources */ = {isa = PBXBuildFile; fileRef = 79A136D925D10F96006FEFAF /* cocktail.json */; };
 		79A136E225D10FFA006FEFAF /* CocktailModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136E125D10FFA006FEFAF /* CocktailModelTests.swift */; };
 		79A136F025D11F7F006FEFAF /* FormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136EF25D11F7E006FEFAF /* FormattingTests.swift */; };
+		79A136F825D125F0006FEFAF /* NetworkRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136F725D125F0006FEFAF /* NetworkRequestTests.swift */; };
+		79A136FD25D1303C006FEFAF /* MockedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136FC25D1303A006FEFAF /* MockedRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		79A136D925D10F96006FEFAF /* cocktail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cocktail.json; sourceTree = "<group>"; };
 		79A136E125D10FFA006FEFAF /* CocktailModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailModelTests.swift; sourceTree = "<group>"; };
 		79A136EF25D11F7E006FEFAF /* FormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingTests.swift; sourceTree = "<group>"; };
+		79A136F725D125F0006FEFAF /* NetworkRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestTests.swift; sourceTree = "<group>"; };
+		79A136FC25D1303A006FEFAF /* MockedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,7 @@
 				79A136D925D10F96006FEFAF /* cocktail.json */,
 				79A136E125D10FFA006FEFAF /* CocktailModelTests.swift */,
 				79A136EF25D11F7E006FEFAF /* FormattingTests.swift */,
+				79A136F725D125F0006FEFAF /* NetworkRequestTests.swift */,
 			);
 			path = CocktailInfoTests;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 			children = (
 				791072E925CD1C28001BDC78 /* NetworkRequest.swift */,
 				791072EE25CD1C4E001BDC78 /* APIResource.swift */,
+				79A136FC25D1303A006FEFAF /* MockedRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 				791072EF25CD1C4E001BDC78 /* APIResource.swift in Sources */,
 				79A136D025CF111E006FEFAF /* UIView.swift in Sources */,
 				791072B025CD19A4001BDC78 /* SceneDelegate.swift in Sources */,
+				79A136FD25D1303C006FEFAF /* MockedRequest.swift in Sources */,
 				7910730A25CD278E001BDC78 /* ListViewController.swift in Sources */,
 				791072F525CD1C7A001BDC78 /* NetworkError.swift in Sources */,
 				7910733125CDAFDB001BDC78 /* CocktailDataSource.swift in Sources */,
@@ -374,6 +381,7 @@
 			files = (
 				79A136F025D11F7F006FEFAF /* FormattingTests.swift in Sources */,
 				79A136E225D10FFA006FEFAF /* CocktailModelTests.swift in Sources */,
+				79A136F825D125F0006FEFAF /* NetworkRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

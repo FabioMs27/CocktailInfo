@@ -8,9 +8,28 @@
 import Foundation
 import UIKit
 
+extension URLSession: URLSessionProtocol {
+    func dataTaskWithURL(_ url: URL, completionHandler: @escaping DataTaskResult)
+    -> URLSessionDataTaskProtocol {
+        dataTask(with: url, completionHandler: completionHandler) as URLSessionDataTaskProtocol
+    }
+}
+
+protocol URLSessionProtocol: URLSession {
+    typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Void
+    func dataTask(with url: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTask
+}
+
+extension URLSessionDataTask: URLSessionDataTaskProtocol {}
+
+protocol URLSessionDataTaskProtocol {
+    func resume()
+}
+
 /// Used to fetch data from a url and parse it into swift data.
 protocol NetworkRequest: AnyObject {
     associatedtype ModelType
+    var session: URLSessionProtocol { get }
     func decode(_ data: Data) -> ModelType?
     func load(withCompletion completion: @escaping (Result<ModelType, NetworkError>) -> ())
 }
@@ -21,7 +40,7 @@ extension NetworkRequest {
     ///   - url: The api host with it's path and query information.
     ///   - completion: A closure carrying the parsed model type or a error as parameter.
     /// - Returns: A result enumeration containing either a model type or a network error.
-    fileprivate func load(_ url: URL?, withCompletion completion: @escaping (Result<ModelType, NetworkError>) -> ()) {
+    func load(_ url: URL?, withCompletion completion: @escaping (Result<ModelType, NetworkError>) -> ()) {
         DispatchQueue.global(qos: .background).async {
             
             guard let url = url else {
@@ -78,6 +97,9 @@ class APIRequest<Resource: APIResource> {
 }
 
 extension APIRequest: NetworkRequest {
+    
+    var session: URLSessionProtocol { URLSession.shared }
+    
     /// Decodes data into model type.
     /// - Parameter data: The data recieved from the url.
     /// - Returns: Parsed data into a model type.
@@ -108,6 +130,7 @@ class ImageRequest {
 }
 
 extension ImageRequest: NetworkRequest {
+    var session: URLSessionProtocol { URLSession.shared }
     typealias ModelType = UIImage
     
     /// Decodes the data recieved from the url given parsing it into a UIImage.
