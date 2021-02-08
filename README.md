@@ -14,9 +14,9 @@ It contains unit tests and it used the mock protocol approach. URLSession and UR
 It uses storyboard for the UI and NSLayoutConstraints(also programmatically) and stack views for the Auto-layout.<br/>
 The architectural pattern used is MVVM and it uses the reactive programming(Combine) approach for binding.<br/>
 
-## UI
+### UI
   - Storyboard
-## Architectural pattern
+### Architectural pattern
   - MVVM
-## Networking
+### Networking
   - URLSession
