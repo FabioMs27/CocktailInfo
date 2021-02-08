@@ -8,12 +8,12 @@
 import XCTest
 @testable import CocktailInfo
 
-class CocktailModel: XCTestCase {
+class CocktailModelTests: XCTestCase {
     
     let fileName = "cocktail"
     
     func testCocktailDecoding() {
-        guard let url = Bundle(for: CocktailModel.self).url(forResource: fileName, withExtension: "json"),
+        guard let url = Bundle(for: CocktailModelTests.self).url(forResource: fileName, withExtension: "json"),
               let data = try? Data(contentsOf: url) else {
             fatalError("Couldn't locate file")
         }
