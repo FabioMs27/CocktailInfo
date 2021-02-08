@@ -7,23 +7,6 @@
 
 import Foundation
 
-private class MockedURLDataTask: URLSessionDataTaskProtocol {
-    private (set) var resumeWasCalled = false
-    func resume() {
-        resumeWasCalled = true
-    }
-}
-
-private class MockedURLSession: URLSession {    
-    func dataTask(with url: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
-        if let data = try? Data(contentsOf: url) {
-            completionHandler(data, nil, nil)
-        }
-        completionHandler(nil, nil, .some(NetworkError.objectNotDecoded))
-        return MockedURLDataTask()
-    }
-}
-
 /// Recieves a resource containing the url and model type and perform api related requests.
 class MockedRequest<Resource: APIResource> {
     let resource: Resource

@@ -26,4 +26,19 @@ class NetworkRequestTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
+    func testDecodingFailure() {
+        let expectation = XCTestExpectation(description: "Expectation")
+        let url = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
+        let resource = MockedResource<Cocktail>(url: url)
+        let request = MockedRequest(resource: resource)
+        request.load { result in
+            switch result {
+            case .success: break
+            case .failure(let error):
+                XCTAssertEqual(error.localizedDescription, NetworkError.objectNotDecoded.localizedDescription)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 1.0)
+    }
 }

@@ -29,6 +29,7 @@
 		79A136F025D11F7F006FEFAF /* FormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136EF25D11F7E006FEFAF /* FormattingTests.swift */; };
 		79A136F825D125F0006FEFAF /* NetworkRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136F725D125F0006FEFAF /* NetworkRequestTests.swift */; };
 		79A136FD25D1303C006FEFAF /* MockedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136FC25D1303A006FEFAF /* MockedRequest.swift */; };
+		79EAF07025D18A7A00FF8EED /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EAF06F25D18A7A00FF8EED /* URLSessionProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		79A136EF25D11F7E006FEFAF /* FormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingTests.swift; sourceTree = "<group>"; };
 		79A136F725D125F0006FEFAF /* NetworkRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestTests.swift; sourceTree = "<group>"; };
 		79A136FC25D1303A006FEFAF /* MockedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedRequest.swift; sourceTree = "<group>"; };
+		79EAF06F25D18A7A00FF8EED /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				791072E925CD1C28001BDC78 /* NetworkRequest.swift */,
 				791072EE25CD1C4E001BDC78 /* APIResource.swift */,
 				79A136FC25D1303A006FEFAF /* MockedRequest.swift */,
+				79EAF06F25D18A7A00FF8EED /* URLSessionProtocol.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79EAF07025D18A7A00FF8EED /* URLSessionProtocol.swift in Sources */,
 				7910733C25CDD78F001BDC78 /* DetailViewController.swift in Sources */,
 				791072AE25CD19A4001BDC78 /* AppDelegate.swift in Sources */,
 				791072EA25CD1C28001BDC78 /* NetworkRequest.swift in Sources */,
