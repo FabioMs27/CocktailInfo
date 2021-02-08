@@ -18,6 +18,8 @@ class ListViewModel: ObservableObject {
     private var requestObject: AnyObject?
     private var imageRequests = [String:AnyObject?]()
     
+    /// Request data from the api and assign them to the models.
+    /// - Parameter search: text from the search bar formatted for the query.
     func fetchData(By search: String? = nil) {
         let resource = DrinksResource(queryValue: search)
         let request = APIRequest(resource: resource)
@@ -38,6 +40,10 @@ class ListViewModel: ObservableObject {
         }
     }
     
+    /// Request image data from the api and assign it to the model.
+    /// - Parameters:
+    ///   - cocktail: the cocktail containing an url to the image.
+    ///   - index: the index relative to the cocktail list.
     private func fetchImage(from cocktail: Cocktail, at index: Int) {
         let request = ImageRequest(url: cocktail.thumbNailUrl)
         imageRequests[cocktail.id] = request

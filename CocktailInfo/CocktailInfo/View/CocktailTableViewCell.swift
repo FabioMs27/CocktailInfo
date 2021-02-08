@@ -27,7 +27,6 @@ class CocktailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         thumbNail.setRoundedShadow()
-
     }
     
 }

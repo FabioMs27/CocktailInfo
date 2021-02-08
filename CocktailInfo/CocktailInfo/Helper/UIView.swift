@@ -7,48 +7,11 @@
 
 import UIKit
 
-@IBDesignable
-extension UIView {
-    
-    @IBInspectable
-    var cornerRadius: CGFloat {
-        get { 0.0 }
-        set { layer.cornerRadius = newValue }
-    }
-    
-    @IBInspectable
-    var shadowRadius: CGFloat {
-        get { 0.0 }
-        set {
-            layer.masksToBounds = false
-            layer.shadowRadius = newValue
-        }
-    }
-    
-    @IBInspectable
-    var shadowOffset: CGSize {
-        get { .zero }
-        set { layer.shadowOffset = newValue }
-    }
-    
-    @IBInspectable
-    var shadowColor: UIColor {
-        get { #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) }
-        set { layer.shadowColor = newValue.cgColor }
-    }
-    
-    @IBInspectable
-    var shadowOpacity: CGFloat {
-        get { 0.0 }
-        set { layer.shadowOpacity = Float(newValue) }
-    }
-    
-}
-
 extension UIView {
     private var deviceHeight: CGFloat { UIScreen.main.bounds.height }
     private var originalHeight: CGFloat { 896.0 }
     
+    /// Adapts constraints to resize according to device's height. It does it recursively meaning all children views will also be affected.
     func setHeightRelativeToDevice() {
         self.constraints
             .filter { $0.identifier == "dynamic" }
@@ -57,6 +20,7 @@ extension UIView {
             .forEach { $0.setHeightRelativeToDevice() }
     }
     
+    /// Rounds the view.
     func setRoundedShadow() {
         layer.cornerRadius = frame.height/2
     }

@@ -43,6 +43,7 @@ class ListViewController: UIViewController {
         }
     }
     
+    /// Add search bar configurations.
     private func setupSearchBar() {
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -51,6 +52,7 @@ class ListViewController: UIViewController {
         definesPresentationContext = true
     }
     
+    /// Bind model values from the viewModel to the controller and add behavior to them. Acts as an observer and calls the closures each time the values are modified.
     private func bindViewModel() {
         viewModel.$drinks.sink { [weak self] drinks in
             self?.dataSource.cocktails = drinks
@@ -89,16 +91,10 @@ class ListViewController: UIViewController {
     }
 }
 
+//MARK: - SearchBar delegate
 extension ListViewController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         let text = searchBar.text ?? ""
         viewModel.fetchData(By: text.formatted)
-    }
-}
-
-extension String {
-    var formatted: String? {
-        let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
-        return trimmed.isEmpty ? nil : trimmed.lowercased().replacingOccurrences(of: " ", with: "")
     }
 }

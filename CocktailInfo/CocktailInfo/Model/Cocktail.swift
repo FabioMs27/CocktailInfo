@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Model representing the cocktail api's data.
 struct Cocktail {
     let id: String
     let name: String
@@ -20,6 +21,11 @@ struct Cocktail {
 }
 
 extension Cocktail: Comparable {
+    /// Compares cocktails for sorting.
+    /// - Parameters:
+    ///   - lhs: value at the left side.
+    ///   - rhs: value at the right side.
+    /// - Returns: true if the left value is lower  than the right value and false for the opposite.
     static func < (lhs: Cocktail, rhs: Cocktail) -> Bool {
         return lhs.name < rhs.name
     }
@@ -38,6 +44,7 @@ extension Cocktail: Decodable {
     }
 }
 
+/// Wrapper containing all the cocktail drinks.
 struct Drinks {
     var drinks: [Cocktail]?
 }

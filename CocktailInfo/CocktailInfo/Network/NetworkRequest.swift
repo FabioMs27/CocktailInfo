@@ -98,6 +98,7 @@ extension APIRequest: NetworkRequest {
     }
 }
 
+/// Responsible for downloading images from the internet.
 class ImageRequest {
     let url: URL?
     
@@ -109,10 +110,16 @@ class ImageRequest {
 extension ImageRequest: NetworkRequest {
     typealias ModelType = UIImage
     
+    /// Decodes the data recieved from the url given parsing it into a UIImage.
+    /// - Parameter data: the image downloaded from the url in data format.
+    /// - Returns: the image after being decoded and parsed.
     func decode(_ data: Data) -> UIImage? {
         return UIImage(data: data)
     }
     
+    /// Loads data from given api and returns a model type or an error.
+    /// - Parameter completion: A closure carrying the parsed model type or a error as parameter.
+    /// - Returns: A result enumeration containing either a model type or a network error.
     func load(withCompletion completion: @escaping (Result<ModelType, NetworkError>) -> ()) {
         load(url, withCompletion: completion)
     }

@@ -7,30 +7,21 @@
 
 import Foundation
 
+/// Generic api resource containing the type and information for performing an api request./
 protocol APIResource {
     associatedtype ModelType: Decodable
+    var url: URL? { get }
     var methodPath: String { get }
     var key: String { get }
     var queryValue: String? { get }
 }
 
-extension APIResource {
-//    var url: URL? {
-//        var components = URLComponents(string: "https://www.thecocktaildb.com/api/json/v1\(key)")
-//        components?.path = methodPath
-//        components?.queryItems = [
-//            URLQueryItem(name: "s", value: queryValue ?? "a"),
-//        ]
-//        return components?.url
-//    }
-    
+/// Contains information to request cocktails.
+struct DrinksResource: APIResource {
+    typealias ModelType = Drinks
     var url: URL? {
         return URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(queryValue ?? "a")")
     }
-}
-
-struct DrinksResource: APIResource {
-    typealias ModelType = Drinks
     let methodPath = "/search.php"
     let key = "/1"
     var queryValue: String?

@@ -15,3 +15,10 @@ extension DateFormatter {
         return formatter
     }()
 }
+
+extension String {
+    var formatted: String? {
+        let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? nil : trimmed.lowercased().replacingOccurrences(of: " ", with: "")
+    }
+}
