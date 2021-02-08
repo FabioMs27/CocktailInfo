@@ -20,3 +20,6 @@ The architectural pattern used is MVVM and it uses the reactive programming(Comb
   - MVVM
 ### Networking
   - URLSession
+  
+### Api website
+  - https://www.thecocktaildb.com/api.php?ref=apilist.fun
