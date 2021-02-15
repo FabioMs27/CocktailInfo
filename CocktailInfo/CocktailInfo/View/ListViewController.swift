@@ -32,15 +32,11 @@ class ListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let row = tableView.indexPathForSelectedRow?.row {
-            let selectedCocktail = dataSource.cocktails[row]
-            let selectedImage = dataSource.thumbNails[row]
-            guard let detailViewController = segue.destination as? DetailViewController else {
-                return
-            }
-            detailViewController.selectedCocktail = selectedCocktail
-            detailViewController.selectedImage = selectedImage
+        guard let row = tableView.indexPathForSelectedRow?.row,
+              let detailViewController = segue.destination as? DetailViewController else {
+            return
         }
+        detailViewController.selectedCocktail = dataSource.cocktails[row]
     }
     
     /// Add search bar configurations.
@@ -56,11 +52,6 @@ class ListViewController: UIViewController {
     private func bindViewModel() {
         viewModel.$drinks.sink { [weak self] drinks in
             self?.dataSource.cocktails = drinks
-            self?.tableView.reloadData()
-        }.store(in: &cancellables)
-        
-        viewModel.$images.sink { [weak self] images in
-            self?.dataSource.thumbNails = images
             self?.tableView.reloadData()
         }.store(in: &cancellables)
         

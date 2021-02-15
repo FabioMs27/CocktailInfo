@@ -18,6 +18,7 @@ struct Cocktail {
     let instructions: String
     let thumbNailUrl: URL
     let dateModified: Date?
+    var thumbImage: UIImage?
 }
 
 extension Cocktail: Comparable {

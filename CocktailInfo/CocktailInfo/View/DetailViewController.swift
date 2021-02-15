@@ -17,7 +17,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak private var instructionsLabel: UILabel!
     
     var selectedCocktail: Cocktail?
-    var selectedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,7 @@ class DetailViewController: UIViewController {
         alcoholicLabel.text = selectedCocktail?.alcoholic ?? ""
         glassLabel.text = selectedCocktail?.glass ?? ""
         instructionsLabel.text = selectedCocktail?.instructions ?? ""
-        cocktailImage.image = selectedImage
+        cocktailImage.image = selectedCocktail?.thumbImage ?? UIImage()
         self.view.setHeightRelativeToDevice()
     }
 

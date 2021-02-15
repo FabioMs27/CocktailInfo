@@ -7,9 +7,9 @@
 
 import Foundation
 
-protocol URLSessionProtocol: URLSession {
+protocol URLSessionProtocol {
     typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Void
-    func dataTask(with url: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTask
+    func dataTaskWithURL(_ url: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
 }
 
 extension URLSession: URLSessionProtocol {
@@ -29,11 +29,11 @@ class MockedURLDataTask: URLSessionDataTaskProtocol {
     func resume() {}
 }
 
-class MockedURLSession: URLSession {
+class MockedURLSession: URLSessionProtocol {
     
     var dataTaskProtocol = MockedURLDataTask()
     
-    func dataTask(with url: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
+    func dataTaskWithURL(_ url: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
         if let data = try? Data(contentsOf: url) {
             completionHandler(data, nil, nil)
         }

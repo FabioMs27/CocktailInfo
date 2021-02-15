@@ -9,7 +9,6 @@ import UIKit
 
 class CocktailDataSource: NSObject {
     var cocktails = [Cocktail]()
-    var thumbNails = [UIImage?]()
 }
 
 extension CocktailDataSource: UITableViewDataSource {
@@ -21,9 +20,7 @@ extension CocktailDataSource: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CocktailTableViewCell") as? CocktailTableViewCell
         cell?.name = cocktails[indexPath.row].name
         cell?.category = cocktails[indexPath.row].category
-        if indexPath.row < thumbNails.count {
-            cell?.cocktailImage = thumbNails[indexPath.row]
-        }
+        cell?.cocktailImage = cocktails[indexPath.row].thumbImage
         return cell ?? UITableViewCell()
     }
     

@@ -11,13 +11,12 @@ import UIKit
 /// Used to fetch data from a url and parse it into swift data.
 protocol NetworkRequest: AnyObject {
     associatedtype ModelType
+    var session: URLSessionProtocol { get }
     func decode(_ data: Data) -> ModelType?
     func load(withCompletion completion: @escaping (Result<ModelType, NetworkError>) -> ())
 }
 
 extension NetworkRequest {
-    var session: URLSessionProtocol { URLSession.shared }
-    
     /// Loads data from given url and returns a model type or an error.
     /// - Parameters:
     ///   - url: The api host with it's path and query information.
@@ -38,7 +37,7 @@ extension NetworkRequest {
             config.timeoutIntervalForResource = 100
             let session = URLSession(configuration: config)
             
-            session.dataTask(with: url) { data, response, error in
+            session.dataTaskWithURL(url) { data, response, error in
                 guard error == nil else {
                     DispatchQueue.main.async {
                         completion(.failure(.offline))
@@ -80,6 +79,7 @@ class APIRequest<Resource: APIResource> {
 }
 
 extension APIRequest: NetworkRequest {
+    var session: URLSessionProtocol { URLSession.shared }
 
     /// Decodes data into model type.
     /// - Parameter data: The data recieved from the url.
@@ -112,7 +112,8 @@ class ImageRequest {
 
 extension ImageRequest: NetworkRequest {
     typealias ModelType = UIImage
-    
+    var session: URLSessionProtocol { URLSession.shared }
+
     /// Decodes the data recieved from the url given parsing it into a UIImage.
     /// - Parameter data: the image downloaded from the url in data format.
     /// - Returns: the image after being decoded and parsed.

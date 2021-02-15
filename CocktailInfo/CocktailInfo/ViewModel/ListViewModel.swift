@@ -12,7 +12,6 @@ import UIKit
 class ListViewModel: ObservableObject {
     
     @Published private(set) var drinks = [Cocktail]()
-    @Published private(set) var images = [UIImage?]()
     @Published private(set) var errorDescription: String?
     
     private var requestObject: AnyObject?
@@ -30,7 +29,6 @@ class ListViewModel: ObservableObject {
             case .success(let list):
                 let listedDrinks = list.drinks ?? []
                 self?.drinks = listedDrinks.sorted(by: <)
-                self?.images = [UIImage?](repeating: nil, count: listedDrinks.count)
                 for (index, cocktail) in listedDrinks.enumerated() {
                     self?.fetchImage(from: cocktail, at: index)
                 }
@@ -50,8 +48,8 @@ class ListViewModel: ObservableObject {
         request.load { [weak self] result in
             switch result {
             case .success(let image):
-                if index < self?.images.count ?? 0 {
-                    self?.images[index] = image
+                if index < self?.drinks.count ?? 0 {
+                    self?.drinks[index].thumbImage = image
                 }
             case .failure: break
             }
