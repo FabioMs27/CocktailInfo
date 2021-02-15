@@ -23,7 +23,7 @@ extension NetworkRequest {
     ///   - completion: A closure carrying the parsed model type or a error as parameter.
     /// - Returns: A result enumeration containing either a model type or a network error.
     func load(_ url: URL?, withCompletion completion: @escaping (Result<ModelType, NetworkError>) -> ()) {
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .background).async { [weak self] in
             
             guard let url = url else {
                 DispatchQueue.main.async {
@@ -32,12 +32,7 @@ extension NetworkRequest {
                 return
             }
             
-            let config = URLSessionConfiguration.default
-            config.waitsForConnectivity = true
-            config.timeoutIntervalForResource = 100
-            let session = URLSession(configuration: config)
-            
-            session.dataTaskWithURL(url) { data, response, error in
+            self?.session.dataTaskWithURL(url) { data, response, error in
                 guard error == nil else {
                     DispatchQueue.main.async {
                         completion(.failure(.offline))

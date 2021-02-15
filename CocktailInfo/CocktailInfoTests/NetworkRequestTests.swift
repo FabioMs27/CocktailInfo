@@ -16,12 +16,8 @@ class NetworkRequestTests: XCTestCase {
         let request = MockedRequest(resource: DrinksResource())
         let expectation = XCTestExpectation(description: "Expectation")
         
-        request.load { result in
-            switch result {
-            case .success:
-                expectation.fulfill()
-            case .failure(let error): fatalError(error.localizedDescription)
-            }
+        request.load { _ in
+            expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1.0)
     }
