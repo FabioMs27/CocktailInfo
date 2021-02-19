@@ -13,7 +13,7 @@ class NetworkRequestTests: XCTestCase {
     let fileName = "cocktail"
 
     func testSuccessfulApiRequestResponse() {
-        let request = MockedRequest(resource: DrinksResource())
+        let request = MockedRequest(resource: CocktailResource())
         let expectation = XCTestExpectation(description: "Expectation")
         
         request.load { _ in

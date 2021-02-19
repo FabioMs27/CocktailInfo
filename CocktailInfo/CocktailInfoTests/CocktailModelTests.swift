@@ -20,8 +20,8 @@ class CocktailModelTests: XCTestCase {
         
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(.customFormat)
-        guard let list = try? decoder.decode(Drinks.self, from: data),
-              let sut = list.drinks?.first else {
+        guard let list = try? decoder.decode(Wrapper<Cocktail>.self, from: data),
+              let sut = list.items?.first else {
             fatalError("Couldn't decode")
         }
         
