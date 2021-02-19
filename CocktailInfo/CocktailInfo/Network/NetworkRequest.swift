@@ -13,7 +13,7 @@ protocol NetworkRequest: AnyObject {
     associatedtype ModelType
     var session: URLSessionProtocol { get }
     func decode(_ data: Data) -> ModelType?
-    func load(withCompletion completion: @escaping (Result<ModelType, NetworkError>) -> ())
+    func load(withCompletion completion: @escaping (Result<ModelType?, NetworkError>) -> ())
 }
 
 extension NetworkRequest {
@@ -22,7 +22,7 @@ extension NetworkRequest {
     ///   - url: The api host with it's path and query information.
     ///   - completion: A closure carrying the parsed model type or a error as parameter.
     /// - Returns: A result enumeration containing either a model type or a network error.
-    func load(_ url: URL?, withCompletion completion: @escaping (Result<ModelType, NetworkError>) -> ()) {
+    func load(_ url: URL?, withCompletion completion: @escaping (Result<ModelType?, NetworkError>) -> ()) {
         DispatchQueue.global(qos: .background).async { [weak self] in
             
             guard let url = url else {
@@ -80,18 +80,18 @@ extension APIRequest: NetworkRequest {
     /// - Parameter data: The data recieved from the url.
     /// - Returns: Parsed data into a model type.
     
-    func decode(_ data: Data) -> Resource.ModelType? {
+    func decode(_ data: Data) -> [Resource.ModelType]? {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.customFormat)
         
-        guard let object = try? decoder.decode(ModelType.self, from: data) else { return nil }
-        return object
+        let wrapper = try? decoder.decode( Wrapper<Resource.ModelType>.self, from: data)
+        return wrapper?.items
     }
     
     /// Loads data from given api and returns a model type or an error.
     /// - Parameter completion: A closure carrying the parsed model type or a error as parameter.
     /// - Returns: A result enumeration containing either a model type or a network error.
-    func load(withCompletion completion: @escaping (Result<Resource.ModelType, NetworkError>) -> ()) {
+    func load(withCompletion completion: @escaping (Result<[Resource.ModelType]?, NetworkError>) -> ()) {
         load(resource.url, withCompletion: completion)
     }
 }
@@ -106,7 +106,7 @@ class ImageRequest {
 }
 
 extension ImageRequest: NetworkRequest {
-    typealias ModelType = UIImage
+    
     var session: URLSessionProtocol { URLSession.shared }
 
     /// Decodes the data recieved from the url given parsing it into a UIImage.
@@ -119,7 +119,7 @@ extension ImageRequest: NetworkRequest {
     /// Loads data from given api and returns a model type or an error.
     /// - Parameter completion: A closure carrying the parsed model type or a error as parameter.
     /// - Returns: A result enumeration containing either a model type or a network error.
-    func load(withCompletion completion: @escaping (Result<ModelType, NetworkError>) -> ()) {
+    func load(withCompletion completion: @escaping (Result<UIImage?, NetworkError>) -> ()) {
         load(url, withCompletion: completion)
     }
 }

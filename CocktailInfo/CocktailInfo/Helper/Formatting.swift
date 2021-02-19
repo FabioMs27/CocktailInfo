@@ -17,7 +17,7 @@ extension DateFormatter {
 }
 
 extension String {
-    var formatted: String? {
+    var researchformatted: String? {
         let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty ? nil : trimmed.lowercased().replacingOccurrences(of: " ", with: "")
     }

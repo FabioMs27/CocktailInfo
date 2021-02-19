@@ -17,8 +17,8 @@ protocol APIResource {
 }
 
 /// Contains information to request cocktails.
-struct DrinksResource: APIResource {
-    typealias ModelType = Drinks
+struct CocktailResource: APIResource {
+    typealias ModelType = Cocktail
     var url: URL? {
         return URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(queryValue ?? "a")")
     }

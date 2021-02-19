@@ -178,7 +178,6 @@
 				791072B325CD19A4001BDC78 /* Main.storyboard */,
 				7910730925CD278E001BDC78 /* ListViewController.swift */,
 				7910732925CDA6E3001BDC78 /* CocktailTableViewCell.swift */,
-				7910733025CDAFDB001BDC78 /* CocktailDataSource.swift */,
 				7910733B25CDD78F001BDC78 /* DetailViewController.swift */,
 			);
 			path = View;
@@ -187,6 +186,7 @@
 		791072E225CD1AF6001BDC78 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7910733025CDAFDB001BDC78 /* CocktailDataSource.swift */,
 				79A136D425CFF91B006FEFAF /* ListViewModel.swift */,
 			);
 			path = ViewModel;
@@ -203,7 +203,7 @@
 		791072E425CD1B01001BDC78 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				791072F325CD1C6D001BDC78 /* Error Handling */,
+				791072F425CD1C7A001BDC78 /* NetworkError.swift */,
 				7910730E25CD2DA1001BDC78 /* Formatting.swift */,
 				79A136CF25CF111D006FEFAF /* UIView.swift */,
 			);
@@ -219,14 +219,6 @@
 				79EAF06F25D18A7A00FF8EED /* URLSessionProtocol.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		791072F325CD1C6D001BDC78 /* Error Handling */ = {
-			isa = PBXGroup;
-			children = (
-				791072F425CD1C7A001BDC78 /* NetworkError.swift */,
-			);
-			path = "Error Handling";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

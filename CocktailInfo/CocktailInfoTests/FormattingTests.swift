@@ -10,10 +10,13 @@ import XCTest
 
 class FormattingTests: XCTestCase {
 
-    func testStringFormatting() {
+    func testSearchFormatting() {
         let search = " Margarita Blue   "
-        let sut = search.formatted
+        let sut = search.researchformatted
         XCTAssertEqual(sut, "margaritablue")
+        
+        let emptySearch = ""
+        XCTAssertNil(emptySearch.researchformatted)
     }
     
     func testDateFormatting() {

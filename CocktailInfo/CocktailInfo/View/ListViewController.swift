@@ -86,6 +86,6 @@ class ListViewController: UIViewController {
 extension ListViewController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         let text = searchBar.text ?? ""
-        viewModel.fetchData(By: text.formatted)
+        viewModel.fetchData(By: text.researchformatted)
     }
 }

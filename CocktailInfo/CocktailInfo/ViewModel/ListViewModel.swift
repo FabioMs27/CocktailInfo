@@ -20,14 +20,14 @@ class ListViewModel: ObservableObject {
     /// Request data from the api and assign them to the models.
     /// - Parameter search: text from the search bar formatted for the query.
     func fetchData(By search: String? = nil) {
-        let resource = DrinksResource(queryValue: search)
+        let resource = CocktailResource(queryValue: search)
         let request = APIRequest(resource: resource)
         requestObject = request
         imageRequests.removeAll()
         request.load { [weak self] result in
             switch result {
-            case .success(let list):
-                let listedDrinks = list.drinks ?? []
+            case .success(let drinks):
+                let listedDrinks = drinks ?? []
                 self?.drinks = listedDrinks.sorted(by: <)
                 for (index, cocktail) in listedDrinks.enumerated() {
                     self?.fetchImage(from: cocktail, at: index)

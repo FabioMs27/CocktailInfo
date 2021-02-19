@@ -46,12 +46,12 @@ extension Cocktail: Decodable {
 }
 
 /// Wrapper containing all the cocktail drinks.
-struct Drinks {
-    var drinks: [Cocktail]?
+struct Wrapper<T: Decodable> {
+    let items: [T]?
 }
 
-extension Drinks: Decodable {
+extension Wrapper: Decodable {
     enum CodingKeys: String, CodingKey {
-        case drinks
+        case items = "drinks"
     }
 }
