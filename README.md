@@ -1,5 +1,3 @@
-# PrintfulAssessment
-Assessment for the iOS developer position at Printful.<br/>
 In this app you can search and view informations regarding various cocktails.<br/>
 Information such as it's category, glass used and intructions on how to make it.<br/>
 
