@@ -51,4 +51,15 @@ extension CocktailDataSource: UITableViewDataSource {
         return cell
     }
     
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return filteredCategories
+            .map { category in String(category.first ?? " ") }
+            .reduce(into: Set<String>(), { $0.insert($1) })
+            .sorted()
+    }
+    
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return filteredCategories.firstIndex(where: { $0.hasPrefix(title) }) ?? 0
+    }
+    
 }
