@@ -12,17 +12,38 @@ import UIKit
 class ListViewModel: ObservableObject {
     
     @Published private(set) var drinks = [Cocktail]()
+    @Published private(set) var categories = [Categories]()
     @Published private(set) var errorDescription: String?
+    private var search: String?
     
-    private var requestObject: AnyObject?
+    private var cocktailRequest: AnyObject?
+    private var categoriesRequest: AnyObject?
     private var imageRequests = [String:AnyObject?]()
     
     /// Request data from the api and assign them to the models.
     /// - Parameter search: text from the search bar formatted for the query.
     func fetchData(By search: String? = nil) {
+        self.search = search
+        fetchCockatil()
+    }
+    
+    private func fetchCategories() {
+        let request = APIRequest(resource: CategoriesResource())
+        categoriesRequest = request
+        request.load { [weak self] result in
+            switch result {
+            case .success(let categories):
+                self?.categories = (categories ?? []).sorted(by: <)
+            case .failure(let error):
+                self?.errorDescription = error.localizedDescription
+            }
+        }
+    }
+    
+    private func fetchCockatil() {
         let resource = CocktailResource(queryValue: search)
         let request = APIRequest(resource: resource)
-        requestObject = request
+        cocktailRequest = request
         imageRequests.removeAll()
         request.load { [weak self] result in
             switch result {
@@ -35,6 +56,7 @@ class ListViewModel: ObservableObject {
             case .failure(let error):
                 self?.errorDescription = error.localizedDescription
             }
+            self?.fetchCategories()
         }
     }
     

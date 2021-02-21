@@ -30,6 +30,15 @@ extension Cocktail: Comparable {
     static func < (lhs: Cocktail, rhs: Cocktail) -> Bool {
         return lhs.name < rhs.name
     }
+    
+    static func == (lhs: String, rhs: Cocktail) -> Bool {
+        if lhs == rhs.alcoholic ||
+            lhs == rhs.category ||
+            lhs == rhs.glass {
+            return true
+        }
+        return false
+    }
 }
 
 extension Cocktail: Decodable {
@@ -45,13 +54,4 @@ extension Cocktail: Decodable {
     }
 }
 
-/// Wrapper containing all the cocktail drinks.
-struct Wrapper<T: Decodable> {
-    let items: [T]?
-}
 
-extension Wrapper: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case items = "drinks"
-    }
-}

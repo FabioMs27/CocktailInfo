@@ -32,11 +32,12 @@ class ListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let row = tableView.indexPathForSelectedRow?.row,
+        guard let section = tableView.indexPathForSelectedRow?.section,
+              let row = tableView.indexPathForSelectedRow?.row,
               let detailViewController = segue.destination as? DetailViewController else {
             return
         }
-        detailViewController.selectedCocktail = dataSource.cocktails[row]
+        detailViewController.selectedCocktail = dataSource.cocktailByCategory[section][row]
     }
     
     /// Add search bar configurations.
@@ -52,6 +53,7 @@ class ListViewController: UIViewController {
     private func bindViewModel() {
         viewModel.$drinks.sink { [weak self] drinks in
             self?.dataSource.cocktails = drinks
+            self?.dataSource.updateCocktailByCategory()
             self?.tableView.reloadData()
         }.store(in: &cancellables)
         
@@ -59,6 +61,12 @@ class ListViewController: UIViewController {
             if let message = description {
                 self?.showAlert(title: "Error!", message: message)
             }
+        }.store(in: &cancellables)
+        
+        viewModel.$categories.sink { [weak self] categories in
+            self?.dataSource.categories = categories.map { $0.category }
+            self?.dataSource.updateCocktailByCategory()
+            self?.tableView.reloadData()
         }.store(in: &cancellables)
     }
     

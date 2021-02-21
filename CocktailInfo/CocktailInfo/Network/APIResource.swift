@@ -26,3 +26,13 @@ struct CocktailResource: APIResource {
     let key = "/1"
     var queryValue: String?
 }
+
+struct CategoriesResource: APIResource {
+    typealias ModelType = Categories
+    var url: URL? {
+        return URL(string: "https://www.thecocktaildb.com/api/json/v1/1/list.php?\(self.queryValue ?? "c")=list")
+    }
+    let methodPath = "/list.php"
+    let key = "/1"
+    var queryValue: String?
+}

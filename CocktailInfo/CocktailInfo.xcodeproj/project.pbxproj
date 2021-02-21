@@ -22,6 +22,7 @@
 		7910732B25CDA6E3001BDC78 /* CocktailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910732925CDA6E3001BDC78 /* CocktailTableViewCell.swift */; };
 		7910733125CDAFDB001BDC78 /* CocktailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910733025CDAFDB001BDC78 /* CocktailDataSource.swift */; };
 		7910733C25CDD78F001BDC78 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7910733B25CDD78F001BDC78 /* DetailViewController.swift */; };
+		795BC00325E23FAB0095E0E6 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BC00225E23FAB0095E0E6 /* Categories.swift */; };
 		79A136D025CF111E006FEFAF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136CF25CF111D006FEFAF /* UIView.swift */; };
 		79A136D525CFF91C006FEFAF /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A136D425CFF91B006FEFAF /* ListViewModel.swift */; };
 		79A136DA25D10F97006FEFAF /* cocktail.json in Resources */ = {isa = PBXBuildFile; fileRef = 79A136D925D10F96006FEFAF /* cocktail.json */; };
@@ -71,6 +72,7 @@
 		7910732925CDA6E3001BDC78 /* CocktailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailTableViewCell.swift; sourceTree = "<group>"; };
 		7910733025CDAFDB001BDC78 /* CocktailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailDataSource.swift; sourceTree = "<group>"; };
 		7910733B25CDD78F001BDC78 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		795BC00225E23FAB0095E0E6 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		79A136CF25CF111D006FEFAF /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		79A136D425CFF91B006FEFAF /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		79A136D925D10F96006FEFAF /* cocktail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cocktail.json; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				791072FC25CD1EEB001BDC78 /* Cocktail.swift */,
+				795BC00225E23FAB0095E0E6 /* Categories.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				791072EF25CD1C4E001BDC78 /* APIResource.swift in Sources */,
 				79A136D025CF111E006FEFAF /* UIView.swift in Sources */,
 				791072B025CD19A4001BDC78 /* SceneDelegate.swift in Sources */,
+				795BC00325E23FAB0095E0E6 /* Categories.swift in Sources */,
 				79A136FD25D1303C006FEFAF /* MockedRequest.swift in Sources */,
 				7910730A25CD278E001BDC78 /* ListViewController.swift in Sources */,
 				791072F525CD1C7A001BDC78 /* NetworkError.swift in Sources */,
