@@ -1,5 +1,5 @@
 In this app you can search and view informations regarding various cocktails.<br/>
-Information such as it's category, glass used and intructions on how to make it.<br/>
+Information such as it's category, glass used and instructions on how to make it.<br/>
 
 ## Gif:
 ![](https://media.giphy.com/media/dQvP6eS8iLEW8OnVXX/giphy.gif)
